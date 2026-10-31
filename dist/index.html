@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080c15"><meta name="description" content="Pilot the last light through the void. A fast, atmospheric survival shooter with evolving weapons and a final boss.">
+  <title>VOID//RUNNER — Survive the singularity</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%235af5cf' d='M32 3 59 56 32 43 5 56Z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game" aria-label="Void Runner game arena"></canvas>
+  <div class="vignette"></div>
+  <header><a class="wordmark" href="#" aria-label="Void Runner">V<span>//</span>R</a><div class="header-label">VOID RUNNER <span>FLIGHT SYSTEM / 01</span></div><div class="header-actions"><button id="sound" title="Toggle sound (M)" aria-label="Enable sound">SOUND OFF</button><button id="pause" class="hidden" title="Pause (Esc)">Ⅱ</button><button id="fullscreen" title="Fullscreen" aria-label="Enter fullscreen">⛶</button></div></header>
+  <main id="menu" class="screen">
+    <section class="intro">
+      <div class="eyebrow"><span class="live-dot"></span> A SIGNAL IN THE DARK</div>
+      <h1>VOID<span>//</span><br>RUNNER<span class="period">.</span></h1>
+      <p class="intro-copy">You are the last light.<br>Make the darkness earn it.</p>
+      <button id="start" class="primary">ENTER THE VOID <span>↗</span></button>
+      <div class="mission">SURVIVE 3 MINUTES. DESTROY THE SINGULARITY.</div>
+      <div class="controls"><div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>Move</span></div><div><kbd>SPACE</kbd><span>Dash</span></div><div><span class="aim-icon">⌖</span><span>Auto-fire</span></div></div>
+      <p class="touch-instructions">Drag to move · Tap DASH to evade · Weapons fire automatically</p>
+    </section>
+    <aside class="ship-caption"><span class="caption-line"></span><div>VESSEL 001 <strong>THE WANDERER</strong><small>PULSE ENGINE / ONLINE</small></div></aside>
+    <footer><span>AN ARCADE ROGUELITE</span><span id="best">PERSONAL BEST — 0</span></footer>
+  </main>
+  <div id="hud" class="hidden">
+    <div class="run-info"><div class="eyebrow" id="sector">SECTOR 01</div><div id="timer">00:00</div><div id="objective">SURVIVE THE VOID</div></div>
+    <div class="score-info"><span>SCORE</span><strong id="score">000000</strong><small id="kills">0 HOSTILES CLEARED</small></div>
+    <div id="bossHud" class="hidden"><span>THE SINGULARITY</span><div><i id="bossFill"></i></div></div>
+    <div class="bottom-hud"><div class="health-panel"><div><span>HULL INTEGRITY</span><strong id="healthText">100 / 100</strong></div><div class="bar"><i id="healthFill"></i></div><small id="weaponLabel">PULSE I</small></div><div class="dash-panel"><span id="dashLabel">DASH READY</span><div class="bar"><i id="dashFill"></i></div><small>SPACE / EVADE</small></div></div>
+    <div class="xp-track"><i id="xpFill"></i><span id="level">LVL 01</span></div>
+    <button id="touchDash" aria-label="Dash">DASH</button>
+    <div id="toast" role="status"></div>
+  </div>
+  <section id="upgrade" class="screen overlay hidden" aria-labelledby="upgradeTitle"><div class="dialog upgrade-dialog"><div class="eyebrow">ENERGY THRESHOLD REACHED</div><h2 id="upgradeTitle">Evolve your vessel.</h2><p class="dialog-copy">Choose one augmentation. Make it count.</p><div id="cards"></div><small class="hint">PRESS 1, 2 OR 3 TO SELECT</small></div></section>
+  <section id="paused" class="screen overlay hidden" aria-labelledby="pausedTitle"><div class="dialog"><div class="eyebrow">SIGNAL HELD</div><h2 id="pausedTitle">Take a breath.</h2><p class="dialog-copy">The void can wait.</p><button id="resume" class="primary">RESUME FLIGHT <span>↗</span></button><button id="quit" class="text-button">ABANDON RUN</button></div></section>
+  <section id="ending" class="screen overlay hidden" aria-labelledby="endTitle"><div class="dialog end-dialog"><div class="eyebrow" id="endEyebrow">SIGNAL LOST</div><h2 id="endTitle">A light goes out.</h2><p class="dialog-copy" id="endCopy">The void remembers every attempt.</p><div class="end-stats"><div><span>FINAL SCORE</span><strong id="endScore">0</strong></div><div><span>TIME ALIVE</span><strong id="endTime">00:00</strong></div><div><span>HOSTILES</span><strong id="endKills">0</strong></div></div><p id="record" class="record"></p><button id="restart" class="primary">ONE MORE RUN <span>↗</span></button><button id="home" class="text-button">RETURN TO HANGAR</button></div></section>
+  <script src="game.js"></script>
+</body>
+</html>
